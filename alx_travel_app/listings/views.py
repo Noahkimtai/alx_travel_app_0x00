@@ -1,3 +1,38 @@
 from django.shortcuts import render
+from rest_framework import viewsets
 
-# Create your views here.
+from .models import User, Listing, Booking, Review
+from .serializers import (
+    UserSerializer,
+    ListingSerializer,
+    BookingSerializer,
+    ReviewSerializer,
+)
+
+
+class UserViewset(viewsets.ModelViewSet):
+    "Manage property listing"
+
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class ListingViewset(viewsets.ModelViewSet):
+    "Manage property listing"
+
+    queryset = Listing.objects.all()
+    serializer_class = ListingSerializer
+
+
+class BookingViewset(viewsets.ModelViewSet):
+    "Manage booking listing"
+
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+
+class ReviewViewset(viewsets.ModelViewSet):
+    "Manage reviews listing"
+
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerializer
